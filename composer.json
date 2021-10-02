@@ -1,0 +1,21 @@
+{
+    "name": "vladimir163/lead-generator",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Vladimir Samuylov",
+            "email": "vladimir@samujlov.ru"
+        }
+    ],
+    "require": {
+        "php": ">=7.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "App",
+            "LeadGenerator\\": "src",
+            "LogService\\": "LogService",
+            "LeadProcessor\\": "LeadProcessor"
+        }
+    }
+}
