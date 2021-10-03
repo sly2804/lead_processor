@@ -25,6 +25,7 @@ class App
 
     private $logger;
     private $processes;
+    private $startTime;
 
     /**
      * constructor
@@ -36,14 +37,36 @@ class App
     }
 
     /**
+     * before starting processing
+     */
+
+    private function startProcessing()
+    {
+        echo "Start processing..." . PHP_EOL;
+        $this->logger->log('Start processing');
+        $this->startTime = time();
+    }
+
+    /**
+     * after processing is completed
+     */
+    private function endProcessing()
+    {
+        $processingTime = time() - $this->startTime;
+        $this->logger->log('End processing');
+        echo "End processing! Total time is $processingTime seconds!";
+    }
+
+    /**
      * start of application
      */
     public function run() : void
     {
-        $this->logger->log('Start processing');
+        $this->startProcessing();
         $generator = new Generator;
         $generator->generateLeads(self::NUM_LEAD, function (Lead $lead) {
             if (!$this->createProcess($lead)) {
+
                 $this->closingChild();
                 $this->createProcess($lead);
             }
@@ -53,7 +76,7 @@ class App
             }
         });
         $this->closingChild();
-        $this->logger->log('End processing');
+        $this->endProcessing();
     }
 
     /**

@@ -17,7 +17,7 @@ class FileLogger implements LoggerInterface
      */
     public function __construct()
     {
-        $this->fileName = dirname(__FILE__) . '../Logs/' . self::LOG_NAME;
+        $this->fileName = dirname(__FILE__) . '/../Logs/' . self::LOG_NAME;
     }
 
     /**
