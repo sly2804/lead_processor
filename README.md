@@ -4,9 +4,9 @@ Use docker for run.
 
 Create docker image file:
 
-'''bash
+```bash
 docker build  -t IMAGE_NAME .
-'''
+```
 
 
 Start processing in docker container:
